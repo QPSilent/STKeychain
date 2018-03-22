@@ -7,8 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "STKeychain.h"
+
+#define kService @"com.ft.keychain"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) IBOutlet UITextField *key;
+@property (strong, nonatomic) IBOutlet UITextField *value;
+@property (strong, nonatomic) IBOutlet UILabel *result;
 
 @end
 
@@ -16,14 +23,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)save:(id)sender
+{
+    STKeychain *keychain = [[STKeychain alloc]initWithService:kService];
+    [keychain saveValue:_value.text forKey:_key.text];
 }
 
+- (IBAction)read:(id)sender
+{
+    STKeychain *keychain = [[STKeychain alloc]initWithService:kService];
+    _result.text =  [keychain readValue:_key.text];
+}
+
+- (IBAction)deleteValue:(id)sender
+{
+    STKeychain *keychain = [[STKeychain alloc]initWithService:kService];
+    _result.text = [NSString stringWithFormat:@"%d",[keychain deleteValue:_key.text]];
+}
 
 @end

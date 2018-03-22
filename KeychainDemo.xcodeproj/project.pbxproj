@@ -13,6 +13,7 @@
 		ADAD9E4F2063A1B100BACACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADAD9E4E2063A1B100BACACE /* Assets.xcassets */; };
 		ADAD9E522063A1B100BACACE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAD9E502063A1B100BACACE /* LaunchScreen.storyboard */; };
 		ADAD9E552063A1B100BACACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD9E542063A1B100BACACE /* main.m */; };
+		ADAD9E5E2063A1EC00BACACE /* STKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD9E5D2063A1EC00BACACE /* STKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		ADAD9E512063A1B100BACACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADAD9E532063A1B100BACACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADAD9E542063A1B100BACACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ADAD9E5C2063A1EC00BACACE /* STKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKeychain.h; sourceTree = "<group>"; };
+		ADAD9E5D2063A1EC00BACACE /* STKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		ADAD9E442063A1B100BACACE /* KeychainDemo */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD9E5B2063A1EC00BACACE /* STKeychain */,
 				ADAD9E452063A1B100BACACE /* AppDelegate.h */,
 				ADAD9E462063A1B100BACACE /* AppDelegate.m */,
 				ADAD9E482063A1B100BACACE /* ViewController.h */,
@@ -69,6 +73,15 @@
 				ADAD9E542063A1B100BACACE /* main.m */,
 			);
 			path = KeychainDemo;
+			sourceTree = "<group>";
+		};
+		ADAD9E5B2063A1EC00BACACE /* STKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				ADAD9E5C2063A1EC00BACACE /* STKeychain.h */,
+				ADAD9E5D2063A1EC00BACACE /* STKeychain.m */,
+			);
+			path = STKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +157,7 @@
 			files = (
 				ADAD9E4A2063A1B100BACACE /* ViewController.m in Sources */,
 				ADAD9E552063A1B100BACACE /* main.m in Sources */,
+				ADAD9E5E2063A1EC00BACACE /* STKeychain.m in Sources */,
 				ADAD9E472063A1B100BACACE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PL9NCP8CG6;
 				INFOPLIST_FILE = KeychainDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ftsafe.KeychainDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PL9NCP8CG6;
 				INFOPLIST_FILE = KeychainDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ftsafe.KeychainDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
