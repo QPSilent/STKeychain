@@ -40,9 +40,9 @@
 }
 
 //存储数据,类比字典的key-value存储方式
-- (void)saveValue:(NSString *)value forKey:(NSString *)key;
+- (void)saveValue:(id)value forKey:(NSString *)key;
 {
-    NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
+    //NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
     
     //获取对应的字典
     NSMutableDictionary *keychainQuery = [self getKeychainQuery:key];
@@ -51,14 +51,14 @@
     SecItemDelete((__bridge_retained CFDictionaryRef)keychainQuery);
     
     //Add new object to search dictionary(Attention:the data format)
-    [keychainQuery setObject:valueData forKey:(__bridge_transfer id)kSecValueData];
+    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:value] forKey:(__bridge_transfer id)kSecValueData];
     
     //Add item to keychain with the search dictionary
     SecItemAdd((__bridge_retained CFDictionaryRef)keychainQuery, NULL);
 }
 
 //读取数据
-- (NSString *)readValue:(NSString *)key;
+- (id)readValue:(NSString *)key;
 {
     NSMutableDictionary *keychainQuery = [self getKeychainQuery:key];
     
@@ -75,8 +75,7 @@
         
         if (keyData == nil){return nil;}
         
-        NSData *resultData = (__bridge_transfer NSData *)keyData;
-        NSString *password = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
+        id password = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge_transfer NSData *)keyData];
         
         return password;
     }

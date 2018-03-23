@@ -28,6 +28,7 @@
 - (IBAction)save:(id)sender
 {
     STKeychain *keychain = [[STKeychain alloc]initWithService:kService];
+    
     [keychain saveValue:_value.text forKey:_key.text];
 }
 
@@ -41,6 +42,12 @@
 {
     STKeychain *keychain = [[STKeychain alloc]initWithService:kService];
     _result.text = [NSString stringWithFormat:@"%d",[keychain deleteValue:_key.text]];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [_key resignFirstResponder];
+    [_value resignFirstResponder];
 }
 
 @end
